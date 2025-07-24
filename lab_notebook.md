@@ -31,17 +31,20 @@
       zcat 1294_S1_L008_R3_001.fastq.gz | head -2 | tail -1 | wc
       zcat 1294_S1_L008_R4_001.fastq.gz | head -2 | tail -1 | wc
       ```
-    - To determine Phred encoding, did this command and saw "#" which only exists in Phred +33:
+    - To determine Phred encoding, did this command and saw "#" in each file which only exists in Phred +33:
       ```
       zcat 1294_S1_L008_R1_001.fastq.gz | head -4
+      zcat 1294_S1_L008_R2_001.fastq.gz | head -4
+      zcat 1294_S1_L008_R3_001.fastq.gz | head -4
+      zcat 1294_S1_L008_R4_001.fastq.gz | head -4
       ```
 
- | File    | Data | Read Length |
-| -------- | ------- | ------- | 
-| 1294_S1_L008_R1_001.fastq.gz  | Read 1    | 101
-| 1294_S1_L008_R4_001.fastq.gz | Read 2     | 101
-| 1294_S1_L008_R2_001.fastq.gz    | Index 1    | 8
-| 1294_S1_L008_R3_001.fastq.gz    | Index 2    | 8
+| File name | label | Read length | Phred encoding |
+|---|---|---|---|
+| 1294_S1_L008_R1_001.fastq.gz | Read 1 | 101 | +33 |
+| 1294_S1_L008_R2_001.fastq.gz | Index 1 | 8 | +33 |
+| 1294_S1_L008_R3_001.fastq.gz | Index 2  | 8 | +33 |
+| 1294_S1_L008_R4_001.fastq.gz | Read 2 | 101 | +33 |
 
 
 
