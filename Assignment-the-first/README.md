@@ -56,7 +56,7 @@ Additionally, your algorithm should report:
 You should strive to report values for each possible pair of indexes (both swapped and dual matched). **You should not write any code for this portion of the assignment**. 
 
 ### Be sure to:
-- Define the problem
+- Define the problem (about a paragraph)
 - Determine/describe what output would be informative
 - Write examples (unit tests!):
     - Include four properly formatted input FASTQ files with read pairs that cover all three categories (dual matched, index-hopped, unknown index)
