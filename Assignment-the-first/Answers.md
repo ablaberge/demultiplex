@@ -17,10 +17,31 @@
     
 ## Part 2
 1. Define the problem
-2. Describe output
-3. Upload your [4 input FASTQ files](../TEST-input_FASTQ) and your [>=6 expected output FASTQ files](../TEST-output_FASTQ).
-4. Pseudocode
-5. High level functions. For each function, be sure to include:
+   
+    The algorithm that we are seeking to write is a demultiplexing algorithm for sequencing data. This means that our algorithm should read through a group of FASTQ files (four, one for each read), and seperate each sample's records into their own file. We will do this using the indexes contained in Read 2 and Read 3 files. Index pairs that do no match for any given record will be added to one of two "index hopped" FASTQs (based on R1/R4). Additonally, any reads with undetermined bases should be directed to an second pair of FASTQs. We should also report how many read pairs were classified as paired, index hopped, or undertermined at the end. One further goal is to report how many times each index was swapped (i.e. i2 was swapped with i10 a total for 4 times).
+   
+3. Describe output
+
+    Output files:
+
+        - read1.fq x 24
+           <index>_read1.fq <-- naming covention 
+        - read2.fq x 24
+           <index>_read2.fq <-- naming covention  
+        - hopped_read1.fq
+        - hopped_read2.fq
+        - unk_read1.fq
+        - unk_read2.fq
+    Printed output:
+   
+        - Whether or not the algo ran successfully (don't print other output if it failed)
+        - Number of read pairs in each category (paired, index hopped, and undetermined)
+        - How many times each index was swapped
+
+
+5. Upload your [4 input FASTQ files](../TEST-input_FASTQ) and your [>=6 expected output FASTQ files](../TEST-output_FASTQ).
+6. Pseudocode
+7. High level functions. For each function, be sure to include:
     1. Description/doc string
     2. Function headers (name and parameters)
     3. Test examples for individual functions
