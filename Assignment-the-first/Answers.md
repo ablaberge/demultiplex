@@ -41,6 +41,33 @@
 
 5. Upload your [4 input FASTQ files](../TEST-input_FASTQ) and your [>=6 expected output FASTQ files](../TEST-output_FASTQ).
 6. Pseudocode
+
+```
+numHopped: int = 0
+numMatched: int = 0
+numUnk: int = 0
+indexPairs: dict = {}
+Open indexes.txt for reading:
+    Add each sequence as a key and each index name as a value 
+Open all 4 input FASTQs for reading:
+    While true:
+        Get the next record in every file
+        If we've reached the end of the file (next record == ''):
+            Break
+        If any char in R2.fq or R3.fq (indexes) sequences is undetermined OR index not in list:
+            Add R1.fq and R4.fq records to unk fastqs
+            Append index sequences to headers
+            Increment numUnk
+        Elif indexes from R2.fq and R3.fq match:
+            Add R1.fq and R4.fq records to index_R1.fq and index_R2.fq respectively
+            Append index sequences to headers
+            Increment numMatched
+        Else (we have swapped indices):
+            Add R1.fq and R4.fq records to hopped_R1.fq and hopped_R2.fq respectively
+            Append index sequences to headers
+            Increment numHopped
+```
+
 7. High level functions. For each function, be sure to include:
     1. Description/doc string
     2. Function headers (name and parameters)
