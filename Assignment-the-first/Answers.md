@@ -25,9 +25,9 @@
     Output files:
 
         - read1.fq x 24
-           <index>_read1.fq <-- naming covention 
+           <index_seq>_read1.fq <-- naming covention 
         - read2.fq x 24
-           <index>_read2.fq <-- naming covention  
+           <index_seq>_read2.fq <-- naming covention  
         - hopped_read1.fq
         - hopped_read2.fq
         - unk_read1.fq
@@ -47,25 +47,26 @@ numHopped: int = 0
 numMatched: int = 0
 numUnk: int = 0
 indexPairs: dict = {}
-Open indexes.txt for reading:
-    Add each sequence as a key and each index name as a value 
 Open all 4 input FASTQs for reading:
     While true:
         Get the next record in every file
         If we've reached the end of the file (next record == ''):
             Break
+        Get reverse complement of R3 sequence to use for reminader of loop
         If any char in R2.fq or R3.fq (indexes) sequences is undetermined OR index not in list:
-            Add R1.fq and R4.fq records to unk fastqs
             Append index sequences to headers
+            Add R1.fq and R4.fq records to unk fastqs
             Increment numUnk
         Elif indexes from R2.fq and R3.fq match:
-            Add R1.fq and R4.fq records to index_R1.fq and index_R2.fq respectively
             Append index sequences to headers
+            Add R1.fq and R4.fq records to index_R1.fq and index_R2.fq respectively
             Increment numMatched
         Else (we have swapped indices):
-            Add R1.fq and R4.fq records to hopped_R1.fq and hopped_R2.fq respectively
             Append index sequences to headers
+            Add R1.fq and R4.fq records to hopped_R1.fq and hopped_R2.fq respectively
             Increment numHopped
+        Increment index1,index2 in indexPairs dict
+Print summary stats as decribed above
 ```
 
 7. High level functions. For each function, be sure to include:
@@ -73,3 +74,22 @@ Open all 4 input FASTQs for reading:
     2. Function headers (name and parameters)
     3. Test examples for individual functions
     4. Return statement
+```python
+def reverseComplement(seq:str) -> str:
+    '''Takes a DNA sequence and returns its reverse complement'''
+    return rev_comp_seq
+Input: ATCG
+Output: CGAT
+```
+```python
+def getSeq(record:str) -> str:
+    '''Takes a FASTQ record and returns only the sequence line'''
+    return seq
+Input: 
+@unk
+CCTTCGAC
++
+#AA<FJJJ
+Output:
+CCTTCGAC
+```
