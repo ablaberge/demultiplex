@@ -46,6 +46,9 @@
 | 1294_S1_L008_R3_001.fastq.gz | Index 2  | 8 | +33 |
 | 1294_S1_L008_R4_001.fastq.gz | Read 2 | 101 | +33 |
 
-
+- Sbatch set up for generating per base quality:
+    - 8 cpus per task, everything else default
+    - Output: /projects/bgmp/alaberge/demultiplex/Assignment-the-first/LOG/perBaseQual_36732192.out
+    - Error log (empty): /projects/bgmp/alaberge/demultiplex/Assignment-the-first/LOG/perBaseQual_36732192.err
 
 
