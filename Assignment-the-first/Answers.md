@@ -13,10 +13,10 @@
 2. Per-base NT distribution
 
 
-    <img src="Assignment-the-first/output/1294_S1_L008_R1_001.fastq.gz_qual.png">
-    <img src="Assignment-the-first/output/1294_S1_L008_R2_001.fastq.gz_qual.png">
-    <img src="Assignment-the-first/output/1294_S1_L008_R3_001.fastq.gz_qual.png">
-    <img src="Assignment-the-first/output/1294_S1_L008_R4_001.fastq.gz_qual.png">
+    <img src="output/1294_S1_L008_R1_001.fastq.gz_qual.png">
+    <img src="output/1294_S1_L008_R2_001.fastq.gz_qual.png">
+    <img src="output/1294_S1_L008_R3_001.fastq.gz_qual.png">
+    <img src="output/1294_S1_L008_R4_001.fastq.gz_qual.png">
 
     2. I am choosing not to quality filter this data set because hamming distance analysis of the 24 possible indicies revealed that all index sequences are at least 3 hamming units apart (with most sequences being further apart than this). Therefore, it is extremely unlikely that one misread index may be interpreted as another. The sequences themselves (reads 1 and 4) do not need to be quality filtered either because misreads will be removed during alignment anyways (they will not align to the reference genome). 
 
