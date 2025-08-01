@@ -27,6 +27,9 @@
         Command: ```zcat 1294_S1_L008_R3_001.fastq.gz | awk 'NR % 4 == 2 && /N/' | wc -l```
 
         Output: ```3328051```
+
+        Therefore, 3,976,613 index sequences coresponding to read 1 and 3,328,051 index sequences corresponding to read 2 contain at least one 'N'.
+        
 ## Part 2
 1. Define the problem
    
