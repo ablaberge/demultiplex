@@ -1,0 +1,4 @@
+sample  group   treatment       index   index sequence
+1       2A      control B1      TTCCTAAG
+2       2B      control A5      AACAGCGA
+3       2B      control C1      CCTTCGAC
