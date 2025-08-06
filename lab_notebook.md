@@ -51,4 +51,22 @@
     - Output: /projects/bgmp/alaberge/demultiplex/Assignment-the-first/LOG/perBaseQual_36732192.out
     - Error log (empty): /projects/bgmp/alaberge/demultiplex/Assignment-the-first/LOG/perBaseQual_36732192.err
 
+## Demultiplex - Part 3
 
+- Tested reverseComplement() with the following: 
+    - Input:
+
+      ```    
+      print("ATCNG")
+      print(reverseComplement("ATCNG"))
+      ```
+
+      - Output: 
+      ```
+      ATCNG
+      CNGAT
+      ```
+- Tested getValidIndexes() and generated the correct set of indexes for indexes.txt:
+  ```
+  {'GCTACTCT', 'GTAGCGTA', 'CGGTAATC', 'ACGATCAG', 'GATCAAGG', 'CGATCGAT', 'TAGCCATG', 'ATCATGCG', 'TCGAGAGT', 'CACTTCAC', 'TATGGCAC', 'TCGGATTC', 'AGGATAGC', 'AGAGTCCA', 'TGTTCCGT', 'CTAGCTCA', 'TACCGGAT', 'ATCGTGGT', 'GTCCTAAG', 'GATCTTGC', 'CTCTGGAT', 'AACAGCGA', 'TCTTCGAC', 'TCGACAAG'}
+  ```
