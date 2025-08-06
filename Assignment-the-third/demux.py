@@ -73,10 +73,14 @@ def openFilesForWriting(indexes:set, outputDir:str) -> dict:
     return newFiles
 
 def main():
+    global numHopped
+    global numUnk
+    global numMatched
+    global indexPairs
     indexes: set = getValidIndexes()
     newFiles = openFilesForWriting(indexes,args.outputDir)
     with gzip.open(args.read1,"rt", encoding='utf-8') as r1, gzip.open(args.read2,"rt", encoding='utf-8') as r2, \
-        gzip.open(args.read1,"rt", encoding='utf-8') as r3, gzip.open(args.read4,"rt", encoding='utf-8') as r4:
+        gzip.open(args.read3,"rt", encoding='utf-8') as r3, gzip.open(args.read4,"rt", encoding='utf-8') as r4:
         while True:
 
             forwardRead = getNextRecord(r1)
@@ -113,7 +117,10 @@ def main():
                 R1.write(forwardRead[1]+"\n+\n"+forwardRead[3]+"\n")
                 R2.write(reverseHeader+"\n")
                 R2.write(reverseRead[1]+"\n+\n"+reverseRead[3]+"\n")
-                indexPairs[forwardIndex[1],reverseIndex[1]] += 1
+                if (forwardIndex[1],reverseIndex[1]) in indexPairs:
+                    indexPairs[forwardIndex[1],reverseIndex[1]] += 1
+                else:
+                    indexPairs[forwardIndex[1],reverseIndex[1]] = 1
             else: # Index hopping must have occured
                 numHopped += 1
                 indexPair = forwardIndex[1]+"-"+reverseIndex[1]
@@ -124,10 +131,13 @@ def main():
                 R1.write(forwardRead[1]+"\n+\n"+forwardRead[3]+"\n")
                 R2.write(reverseHeader+"\n")
                 R2.write(reverseRead[1]+"\n+\n"+reverseRead[3]+"\n")
-                indexPairs[forwardIndex[1],reverseIndex[1]] += 1
+                if (forwardIndex[1],reverseIndex[1]) in indexPairs:
+                    indexPairs[forwardIndex[1],reverseIndex[1]] += 1
+                else:
+                    indexPairs[forwardIndex[1],reverseIndex[1]] = 1
     print(f"{numUnk} read-pairs had unknown index-pairs.")
     print(f"{numHopped} read-pairs had hopped index-pairs.")
-    print(f"{numMatched} read pairs matched!")
+    print(f"{numMatched} read-pairs matched!")
 
 
 
